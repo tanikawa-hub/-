@@ -1,0 +1,151 @@
+body {
+  display: flex;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background-color: #0d0d0d; /* 全体の背景を黒に */
+  color: #ffffff; /* 全体文字色を明るい白に */
+}
+
+/* サイドバー全体 */
+.sidebar {
+  width: 220px;
+  background: #121212; /* 少し明るめの黒で段差を作る */
+  border-right: 1px solid #222;
+  padding: 20px;
+  box-shadow: inset -2px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* リスト基本設定 */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+/* ボタン（角なしの黒カード風） */
+.sidebar button, .sidebar a {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05); /* 半透明の黒四角 */
+  border: none;
+  color: #f5f5f5;
+  text-align: left;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 0; /* 角なし */
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.sidebar button:hover, .sidebar a:hover {
+  background: rgba(255, 255, 255, 0.15); /* ホバーで少し明るく */
+}
+
+
+/* 趣味ドロップダウン */
+.dropdown-content {
+  display: none;
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content.open {
+  display: block;
+}
+
+
+/* メイン表示部分 */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+  background: #f2f2f2; /* 明るいグレー */
+  color: #111;         /* 黒文字に変更 */
+  min-height: 100vh;
+}
+
+
+/* ページ表示切替 */
+.page {
+  display: none;
+  animation: fade 0.3s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ページ切り替えアニメーション */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 見出し・文章 */
+h1 {
+  border-bottom: 2px solid #444;
+  padding-bottom: 5px;
+  color: #000000;
+}
+
+.dropdown-content {
+  display: none;
+  padding-left: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dropdown-content.open {
+  display: block;
+  max-height: 200px;
+}
+
+/* ▼ スマホ対応（幅700px以下） */
+@media (max-width: 700px) {
+  body {
+    flex-direction: column; /* 横並び → 縦並び */
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    padding: 15px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sidebar li {
+    margin-bottom: 0;
+  }
+
+  .sidebar button, .sidebar a {
+    width: auto;
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+

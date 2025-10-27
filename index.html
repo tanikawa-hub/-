@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自己紹介サイト</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="sidebar">
+    <ul>
+      <li><button class="nav-btn" data-target="home">ホーム</button></li>
+      <li><button class="nav-btn" data-target="career">経歴</button></li>
+      <li class="dropdown">
+        <button class="dropbtn">趣味 ▼</button>
+        <ul class="dropdown-content">
+          <li><button class="nav-btn" data-target="dance">ダンス</button></li>
+          <li><button class="nav-btn" data-target="travel">旅行</button></li>
+          <li><button class="nav-btn" data-target="music">音楽</button></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <div id="home" class="page active">
+      <h1>ホーム</h1>
+      <p>こんにちは！〇〇です。シンプルな自己紹介サイトへようこそ。</p>
+    </div>
+
+    <div id="career" class="page">
+      <h1>経歴</h1>
+      <p>大学で心理学を専攻中。インターンなどで開発経験を積んでいます。</p>
+    </div>
+
+    <div id="dance" class="page">
+      <h1>ダンス</h1>
+      <p>ヒップホップやポップダンスをしています。</p>
+    </div>
+
+    <div id="travel" class="page">
+      <h1>旅行</h1>
+      <p>国内外問わず、自然の多い場所を巡るのが好きです。</p>
+    </div>
+
+    <div id="music" class="page">
+      <h1>音楽</h1>
+      <p>ロックやEDMを中心に聴いています。</p>
+    </div>
+  </main>
+
+  <script>
+  // ▼ 趣味ツリー開閉
+  document.querySelectorAll('.dropbtn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 他のクリックイベントと干渉しないように
+      const dropdown = btn.parentElement.querySelector('.dropdown-content');
+      dropdown.classList.toggle('open');
+    });
+  });
+
+  // ▼ ページ切り替え
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const pages = document.querySelectorAll('.page');
+
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-target');
+      pages.forEach(page => {
+        page.classList.remove('active');
+        if (page.id === target) {
+          page.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
